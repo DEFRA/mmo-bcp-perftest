@@ -6,7 +6,7 @@ COPY scenarios/ ./scenarios/
 COPY entrypoint.sh .
 
 ENV S3_ENDPOINT https://s3.eu-west-2.amazonaws.com
-ENV TEST_SCENARIO test
+ENV TEST_SCENARIO BCP-v1
 
 ENTRYPOINT [ "./entrypoint.sh" ]
 
