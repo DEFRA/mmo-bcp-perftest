@@ -26,7 +26,8 @@ test_exit_code=$?
 # CDP Portal assumes test suite always produce a single html file
 if [ -n "$RESULTS_OUTPUT_S3_PATH" ]; then
    if [ -f "$JM_REPORTS/index.html" ]; then
-      aws --endpoint-url=$S3_ENDPOINT s3 cp "$JM_REPORTS/index.html" "$RESULTS_OUTPUT_S3_PATH/index.html"
+      aws --endpoint-url=$S3_ENDPOINT s3 cp "$REPORTFILE" "$RESULTS_OUTPUT_S3_PATH/$REPORTFILE"
+      aws --endpoint-url=$S3_ENDPOINT s3 cp "$JM_REPORTS" "$RESULTS_OUTPUT_S3_PATH" --recursive
       if [ $? -eq 0 ]; then
         echo "Test results published to $RESULTS_OUTPUT_S3_PATH"
       fi
